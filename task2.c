@@ -31,9 +31,6 @@ int main()
         dim+=p*v[i];
         p/=2;
     }
-
-
-
     int nr_de_citit=((n+1)*dim)/16;
     if(((n+1)*dim)%16>0)
         nr_de_citit++;
