@@ -2,7 +2,7 @@
 
 int main()
 {
-    // vector de caractere folosit pentru a numerota 
+    // vector de caractere folosit pentru a afisa
     // tipul operatiilor
     char a[4]={'+','-','*','/'};
     int v[32]={0},n,dim=1,i=31;
