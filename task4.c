@@ -31,10 +31,13 @@ int main()
         dim+=p*v[i];
         p/=2;
     }
+    // calcularea a cate numere se citesc
     int nr_de_citit=((n+1)*dim)/16;
     if(((n+1)*dim)%16>0)
         nr_de_citit++;
     unsigned short nr;
+    // memorarea bitilor corespunzatori numerelor
+    // citite in vectorul "w"
     int w[145]={0},nw=-1;
     for(i=1;i<=nr_de_citit;i++)
     {
@@ -49,6 +52,9 @@ int main()
         for(j=0;j<=15;j++)
             w[++nw]=e[j];
     }
+    // calcularea operanzilor pe baza bitilor din 
+    // vectorul "w" si memorarea lor in tabloul 
+    // unidimensional "operanzi"
     int dim_operanzi=0;
     for(int i=0;i<=16*nr_de_citit&&dim_operanzi<=ln_op+1;i++)
     {
@@ -64,6 +70,8 @@ int main()
         }
     }
     dim_operanzi--;
+    // efectuarea operatiilor pe baza prioritatii lor
+    // mai intai operatiile "*" si "/"
     for(int i=0;i<=ln_op;i++)
     {
         if(a[op[i]]=='*')
@@ -77,6 +85,7 @@ int main()
             operanzi[i]=-1;
         }
     }
+    // dupa operatiile "+" si "-"
     for(int i=0;i<=ln_op;i++)
     {
         if(a[op[i]]=='+')
@@ -100,6 +109,7 @@ int main()
             operanzi[q]=operanzi[j]-operanzi[q];
         }
     }
+    // afisarea rezultatului obtinut
     printf("%d\n",operanzi[ln_op+1]);
     return 0;
 }
