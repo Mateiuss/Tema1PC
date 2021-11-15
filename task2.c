@@ -2,7 +2,7 @@
 
 int main()
 {
-    // vector de caractere folosit pentru a numerota 
+    // vector de caractere folosit pentru a afisa
     // tipul operatiilor
     char a[4]={'+','-','*','/'};
     int v[32]={0},op[8],operanzi[145]={0},n,i,dim=1,p=8,k=31,ln_op=-1;
@@ -31,10 +31,13 @@ int main()
         dim+=p*v[i];
         p/=2;
     }
+    // determinarea a cate numere trebuiesc citite
     int nr_de_citit=((n+1)*dim)/16;
     if(((n+1)*dim)%16>0)
         nr_de_citit++;
     unsigned short nr;
+    // memorarea in vectorul "w" bitii corespunzatori tuturor
+    // numerelor citite
     int w[145]={0},nw=-1;
     for(i=1;i<=nr_de_citit;i++)
     {
@@ -49,6 +52,8 @@ int main()
         for(j=0;j<=15;j++)
             w[++nw]=e[j];
     }
+    // calcularea operanzilor si memorarea lor
+    // in vectorul "operanzi"
     int dim_operanzi=0;
     for(int i=0;i<=16*nr_de_citit&&dim_operanzi<=ln_op+1;i++)
     {
@@ -64,6 +69,7 @@ int main()
         }
     }
     dim_operanzi--;
+    // efectuarea operatiilor asupra operanzilor memorati
     for(int i=0;i<=ln_op;i++)
     {
         if(op[i]==0)
@@ -83,6 +89,7 @@ int main()
             operanzi[i+1]=operanzi[i]/operanzi[i+1];
         }
     }
+    // afisarea rezultatului
     printf("%d\n",operanzi[ln_op+1]);
     return 0;
 }
